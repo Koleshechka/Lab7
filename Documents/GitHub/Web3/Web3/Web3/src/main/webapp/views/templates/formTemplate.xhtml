@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<body>
+
+    <ui:composition>
+
+        <h:form>
+            <table>
+        <tr>
+
+                <p:growl id="msg"/>
+
+
+                <td>
+                <label> X </label>
+                </td>
+
+                <td>
+                <p:selectBooleanCheckbox id="x1" value="#{myBean.x1}" itemLabel="-5"/>
+                <p:selectBooleanCheckbox id="x2" value="#{myBean.x2}" itemLabel="-4"/>
+                <p:selectBooleanCheckbox id="x3" value="#{myBean.x3}" itemLabel="-3"/>
+                <p:selectBooleanCheckbox id="x4" value="#{myBean.x4}" itemLabel="-2"/>
+                <p:selectBooleanCheckbox id="x5" value="#{myBean.x5}" itemLabel="-1"/>
+                <p:selectBooleanCheckbox id="x6" value="#{myBean.x6}" itemLabel="0"/>
+                <p:selectBooleanCheckbox id="x7" value="#{myBean.x7}" itemLabel="1"/>
+                </td>
+
+
+        </tr>
+
+        <tr>
+
+            <td>
+            <p:inputText id="maybeHere" value="#{myBean.y}"/>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+            <p:outputLabel id="sveta" value="#{myBean.r}"/>
+            <p:commandButton id="r1" update="sveta" type="button" value="1" action="#{myBean.setR1}"/>
+            <p:commandButton id="r2" update="sveta" type="button" value="2" action="#{myBean.setR2}"/>
+            <p:commandButton id="r3" update="sveta" type="button" value="3" action="#{myBean.setR3}"/>
+            <p:commandButton id="r4" update="sveta" type="button" value="4" action="#{myBean.setR4}"/>
+            <p:commandButton id="r5" update="sveta" type="button" value="5" action="#{myBean.setR5}"/>
+            </td>
+        </tr>
+            </table>
+
+
+        <p:commandButton id="checkButton" value="Проверить"
+                         action="#{myBean.addPoint}"
+                         update="maybeHere x1 x2 x3 x4 x5 x6 x7 r1 r2 r3 r4 r5 sveta historyTable"
+
+                          >
+            <f:ajax execute="@all"
+                    render="historyTable"/>
+
+        </p:commandButton>
+
+        </h:form>
+    </ui:composition>
+</body>
+
+</html>
